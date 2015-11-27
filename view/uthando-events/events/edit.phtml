@@ -1,0 +1,53 @@
+<?php $this->headTitle('Edit Event') ?>
+<?php $this->layout()->pageTitle = 'Edit Event'; ?>
+
+<?=$this->partial('uthando-admin/partial/add-edit-form', [
+    'form' 			=> $this->form,
+    'formName'		=> 'Event',
+    'postUrl'		=> $this->url('admin/events/edit', [
+        'id'    => $this->model->getEventId(),
+    ]),
+    'cancelUrl'     => $this->url('admin/events'),
+    'formElements'	=> [
+        'eventId', 'title', 'dateTime', 'description', 'html',
+    ],
+]); ?>
+
+<?=$this->inlineScript()
+    ->appendFile('//tinymce.cachefly.net/4.2/tinymce.min.js');
+?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.date-time-pick .input-group').datetimepicker({
+            format : 'DD/MM/YYYY h:mm A'
+        });
+
+        tinymce.init({
+            selector:'.tiny-mce-textarea',
+            plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern"
+            ],
+            toolbar1: "insertfile undo redo | styleselect | fontsizeselect bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "bootstrap print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+
+            bootstrapConfig: {
+                'imagesPath': '<?=$this->basePath('/userfiles');?>/' // replace with your images folder path
+            },
+
+            external_plugins: {
+                "bootstrap": "<?=$this->basePath('/js/tinymce/plugins/bootstrap/plugin.js');?>"
+            }
+
+
+            //external_filemanager_path:"<?=$this->basePath('/filemanager');?>/",
+            //filemanager_title:"Responsive Filemanager" ,
+            //external_plugins: { "filemanager" : "<?=$this->basePath('/filemanager/plugin.min.js');?>"}
+
+        });
+    });
+</script>

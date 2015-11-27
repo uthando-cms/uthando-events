@@ -1,0 +1,22 @@
+language: php
+
+php:
+  - 7.0
+
+before_script:
+  - cd ..
+  - git clone git://github.com/uthando-cms/uthando.git
+  - git clone git://github.com/uthando-cms/uthando-common.git
+  - cd uthando
+  - composer install
+  - cp -R ../uthando-admin ./module/UthandoAdmin
+  - cp -R ../uthando-common ./module/UthandoCommon
+  - cd module/UthandoAdmin/test
+
+script:
+  - phpdbg -qrr ../../../vendor/bin/phpunit -v
+
+after_script:
+  - cd ../
+  - cp -R ../../vendor ./vendor
+  - php vendor/bin/test-reporter --coverage-report=build/logs/clover.xml

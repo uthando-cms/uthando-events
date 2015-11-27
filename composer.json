@@ -1,0 +1,33 @@
+{
+  "name": "uthando-cms/uthando-events",
+  "description": "Events module for Uthando CMS",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "framework",
+    "zf2",
+    "cms",
+    "uthando",
+    "events"
+  ],
+  "homepage": "http://shaunfreeman.name/",
+  "authors": [
+    {
+      "name": "Shaun Freeman",
+      "email": "shaun@shaunfreeman.co.uk",
+      "homepage": "https://github.com/shaunfreeman",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "uthando-cms/uthando-common": "2.*",
+  },
+  "autoload": {
+    "psr-0": {
+      "UthandoEvents": "src/"
+    },
+    "classmap": [
+      "./Module.php"
+    ]
+  }
+}
