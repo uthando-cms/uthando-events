@@ -20,7 +20,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "uthando-cms/uthando-common": "2.*",
+    "uthando-cms/uthando-common": "2.*"
   },
   "autoload": {
     "psr-0": {
