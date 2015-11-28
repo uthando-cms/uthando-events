@@ -14,17 +14,19 @@
 ]); ?>
 
 <?=$this->inlineScript()
-    ->appendFile('//tinymce.cachefly.net/4.2/tinymce.min.js');
+    ->appendFile('//cdn.tinymce.com/4/tinymce.min.js');
 ?>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $('.date-time-pick .input-group').datetimepicker({
             format : 'DD/MM/YYYY h:mm A'
+            //format : 'YYYY-MM-DD h:mm:ss'
         });
 
         tinymce.init({
             selector:'.tiny-mce-textarea',
+            relative_urls: false,
             plugins: [
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
@@ -36,7 +38,7 @@
             image_advtab: true,
 
             bootstrapConfig: {
-                'imagesPath': '<?=$this->basePath('/userfiles');?>/' // replace with your images folder path
+                'imagesPath': '<?=$this->serverUrl($this->basePath('/userfiles'));?>/' // replace with your images folder path
             },
 
             external_plugins: {

@@ -37,6 +37,7 @@ class EventsHydrator extends AbstractHydrator
             'eventId'       => $object->getEventId(),
             'title'         => $object->getTitle(),
             'description'   => $object->getDescription(),
+            'html'          => $object->getHtml(),
             'dateTime'      => $this->extractValue('dateTime', $object->getDateTime()),
         ];
     }

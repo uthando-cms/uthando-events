@@ -14,12 +14,14 @@ use UthandoCommon\Hydrator\Strategy\DateTime;
 use UthandoCommon\Service\AbstractMapperService;
 use UthandoEvents\Form\EventsForm;
 use UthandoEvents\Hydrator\EventsHydrator;
+use UthandoEvents\Mapper\EventsMapper;
 use Zend\EventManager\Event;
 
 /**
  * Class EventsService
  *
  * @package UthandoEvents\ServiceManager
+ * @method EventsMapper getMapper($mapperClass = null, array $options = [])
  */
 class EventsService extends AbstractMapperService
 {
@@ -58,7 +60,7 @@ class EventsService extends AbstractMapperService
         $hydrator = $form->getHydrator();
         /* @var DateTime $dateTimeStrategy */
         $dateTimeStrategy = $hydrator->getStrategy('dateTime');
-        $dateTimeStrategy->setDateFormat('d/m/Y H:i A');
+        $dateTimeStrategy->setHydrateFormat('d/m/Y H:i A');
     }
 
     /**
@@ -66,6 +68,7 @@ class EventsService extends AbstractMapperService
      */
     public function getTimeLine()
     {
+        $this->getMapper()->setListOldEntries(true);
         $events = $this->search([
             'sort' => '-dateTime',
         ]);
