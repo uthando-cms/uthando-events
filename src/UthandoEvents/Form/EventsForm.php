@@ -10,20 +10,26 @@
 
 namespace UthandoEvents\Form;
 
-use DateTime;
 use TwbBundle\Form\View\Helper\TwbBundleForm;
-use Zend\Form\Element\Button;
 use Zend\Form\Form;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
 
 /**
  * Class EventsForm
  *
  * @package UthandoEvents\Form
  */
-class EventsForm extends Form
+class EventsForm extends Form implements ServiceLocatorAwareInterface
 {
+    use ServiceLocatorAwareTrait;
+
     public function init()
     {
+        /* @var \UthandoEvents\Options\EventsOptions $options */
+        $options = $this->getServiceLocator()
+            ->getServiceLocator()->get('UthandoEvents\Options\Events');
+
         $this->add([
             'name' => 'eventId',
             'type' => 'hidden',
@@ -82,7 +88,7 @@ class EventsForm extends Form
                 'label_attributes' => [
                     'class' => 'col-md-2',
                 ],
-                'format' => 'd/m/Y H:i A',
+                'format' => $options->getDateFormat(),
             ],
             'attributes' => [
                 'class' => 'date-time-pick',

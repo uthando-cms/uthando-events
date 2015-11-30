@@ -38,7 +38,7 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'UthandoEvents\Options\Event' => 'UthandoEvents\Options\ServiceManager\EventsOptionsFactory',
+            'UthandoEvents\Options\Events' => 'UthandoEvents\ServiceManager\EventsOptionsFactory',
         ]
     ],
     'uthando_mappers' => [
@@ -54,6 +54,11 @@ return [
     'uthando_services' => [
         'invokables' => [
             'UthandoEvents' => 'UthandoEvents\ServiceManager\EventsService',
+        ],
+    ],
+    'view_helpers' => [
+        'invokables' => [
+            'ConvertDateFormat' => 'UthandoEvents\View\Helper\ConvertDateFormat',
         ],
     ],
     'view_manager' => [

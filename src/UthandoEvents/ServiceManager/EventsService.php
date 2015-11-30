@@ -60,7 +60,7 @@ class EventsService extends AbstractMapperService
         $hydrator = $form->getHydrator();
         /* @var DateTime $dateTimeStrategy */
         $dateTimeStrategy = $hydrator->getStrategy('dateTime');
-        $dateTimeStrategy->setHydrateFormat('d/m/Y H:i A');
+        $dateTimeStrategy->setHydrateFormat($this->getOptions()->getDateFormat());
     }
 
     /**
@@ -68,11 +68,22 @@ class EventsService extends AbstractMapperService
      */
     public function getTimeLine()
     {
-        $this->getMapper()->setListOldEntries(true);
+        $this->getMapper()->setListOldEntries(
+            $this->getOptions()->getShowExpiredEvents()
+        );
+
         $events = $this->search([
             'sort' => '-dateTime',
         ]);
 
         return $events;
+    }
+
+    /**
+     * @return \UthandoEvents\Options\EventsOptions
+     */
+    public function getOptions()
+    {
+        return $this->getService('UthandoEvents\Options\Events');
     }
 }

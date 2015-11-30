@@ -20,7 +20,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.date-time-pick .input-group').datetimepicker({
-            format : 'DD/MM/YYYY h:mm A'
+            format : '<?=$this->convertDateFormat('js');?>'
         });
 
         tinymce.init({

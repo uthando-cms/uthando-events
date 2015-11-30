@@ -24,8 +24,8 @@ class EventsOptionsFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config         = $serviceLocator->get('config');
-        $formOptions    = (isset($config['uthando_events'])) ? $config['uthando_events'] : [];
-        $options        = new EventsOptions($formOptions);
+        $eventsOptions    = (isset($config['uthando_events'])) ? $config['uthando_events'] : [];
+        $options        = new EventsOptions($eventsOptions);
 
         return $options;
     }

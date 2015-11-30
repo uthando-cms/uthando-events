@@ -27,8 +27,11 @@ class TimeLineController extends AbstractActionController
         $events = $this->getService('UthandoEvents')
             ->getTimeLine();
 
+        $options = $this->getService('UthandoEvents\Options\Events');
+
         return [
             'events' => $events,
+            'options' => $options,
         ];
     }
 }

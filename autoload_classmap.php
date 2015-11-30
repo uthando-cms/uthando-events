@@ -6,6 +6,7 @@ return array(
     'UthandoEvents\Form\SettingsForm'                   => __DIR__ . '/src/UthandoEvents/Form/SettingsForm.php',
     'UthandoEvents\Hydrator\EventsHydrator'             => __DIR__ . '/src/UthandoEvents/Hydrator/EventsHydrator.php',
     'UthandoEvents\InputFilter\EventsInputFilter'       => __DIR__ . '/src/UthandoEvents/InputFilter/EventsInputFilter.php',
+    'UthandoEvents\InputFilter\SettingsInputFilter'     => __DIR__ . '/src/UthandoEvents/InputFilter/SettingsInputFilter.php',
     'UthandoEvents\Mapper\EventsMapper'                 => __DIR__ . '/src/UthandoEvents/Mapper/EventsMapper.php',
     'UthandoEvents\Model\EventModel'                    => __DIR__ . '/src/UthandoEvents/Model/EventModel.php',
     'UthandoEvents\Mvc\Controller\EventsController'     => __DIR__ . '/src/UthandoEvents/Mvc/Controller/EventsController.php',
@@ -14,4 +15,5 @@ return array(
     'UthandoEvents\Options\EventsOptions'               => __DIR__ . '/src/UthandoEvents/Options/EventsOptions.php',
     'UthandoEvents\ServiceManager\EventsOptionsFactory' => __DIR__ . '/src/UthandoEvents/ServiceManager/EventsOptionsFactory.php',
     'UthandoEvents\ServiceManager\EventsService'        => __DIR__ . '/src/UthandoEvents/ServiceManager/EventsService.php',
+    'UthandoEvents\View\Helper\ConvertDateFormat'       => __DIR__ . '/src/UthandoEvents/View/Helper/ConvertDateFormat.php',
 );
