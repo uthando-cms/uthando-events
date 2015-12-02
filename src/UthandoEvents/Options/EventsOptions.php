@@ -27,6 +27,11 @@ class EventsOptions extends AbstractOptions
     protected $dateFormat = self::DATE_DEFAULT;
 
     /**
+     * @var string
+     */
+    protected $sortOrder = '-dateTime';
+
+    /**
      * @var bool
      */
     protected $showExpiredEvents = false;
@@ -51,6 +56,24 @@ class EventsOptions extends AbstractOptions
     public function setDateFormat($dateFormat)
     {
         $this->dateFormat = $dateFormat;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSortOrder()
+    {
+        return $this->sortOrder;
+    }
+
+    /**
+     * @param string $sortOrder
+     * @return $this
+     */
+    public function setSortOrder($sortOrder)
+    {
+        $this->sortOrder = $sortOrder;
         return $this;
     }
 

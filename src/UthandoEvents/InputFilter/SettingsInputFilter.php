@@ -31,6 +31,15 @@ class SettingsInputFilter extends InputFilter
         ]);
 
         $this->add([
+            'name' => 'sort_order',
+            'required' => true,
+            'filters' => [
+                ['name' => 'StripTags'],
+                ['name' => 'StringTrim'],
+            ]
+        ]);
+
+        $this->add([
             'name' => 'show_expired_events',
             'required' => false,
             'allow_empty' => true,

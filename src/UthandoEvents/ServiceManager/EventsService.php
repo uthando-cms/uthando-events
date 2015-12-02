@@ -73,7 +73,7 @@ class EventsService extends AbstractMapperService
         );
 
         $events = $this->search([
-            'sort' => '-dateTime',
+            'sort' => $this->getOptions()->getSortOrder(),
         ]);
 
         return $events;

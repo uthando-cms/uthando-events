@@ -55,6 +55,19 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
         ]);
 
         $this->add([
+            'name' => 'sort_order',
+            'type' => 'text',
+            'options' => [
+                'label' => 'Sort Order',
+                'column-size' => 'md-4',
+                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
+                'label_attributes' => [
+                    'class' => 'col-md-2',
+                ],
+            ],
+        ]);
+
+        $this->add([
             'name'			=> 'show_expired_events',
             'type'			=> 'checkbox',
             'options'		=> [
