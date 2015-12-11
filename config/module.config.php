@@ -59,6 +59,7 @@ return [
     'view_helpers' => [
         'invokables' => [
             'ConvertDateFormat' => 'UthandoEvents\View\Helper\ConvertDateFormat',
+            'EventsOptions'     => 'UthandoEvents\View\Helper\EventsOptions',
         ],
     ],
     'view_manager' => [
