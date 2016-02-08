@@ -19,6 +19,9 @@ return [
             ],
             'events' => [
                 'label' => 'Events',
+                'params' => [
+                    'icon' => 'fa-calendar-o',
+                ],
                 'pages' => [
                     'list' => [
                         'label'     => 'List All Events',
