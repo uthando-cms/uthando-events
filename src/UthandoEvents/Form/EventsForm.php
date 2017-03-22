@@ -46,34 +46,8 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
                     'class' => 'col-md-2',
                 ],
             ],
-        ]);
-
-        $this->add([
-            'name' => 'description',
-            'type' => 'textarea',
-            'options' => [
-                'label' => 'Description',
-                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
-                'column-size' => 'md-10',
-                'label_attributes' => [
-                    'class' => 'col-md-2',
-                ],
-            ],
-        ]);
-
-        $this->add([
-            'name' => 'html',
-            'type' => 'textarea',
-            'options' => [
-                'label' => 'HTML Content',
-                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
-                'column-size' => 'md-10',
-                'label_attributes' => [
-                    'class' => 'col-md-2',
-                ],
-            ],
             'attributes' => [
-                'class' => 'tiny-mce-textarea',
+                'placeholder' => 'Title',
             ],
         ]);
 
@@ -92,6 +66,45 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
             ],
             'attributes' => [
                 'class' => 'date-time-pick',
+                'placeholder' => 'Date Time',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'description',
+            'type' => 'textarea',
+            'options' => [
+                'label' => 'Description',
+                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
+                'column-size' => 'md-10',
+                'label_attributes' => [
+                    'class' => 'col-md-2',
+                ],
+                'attributes' => [
+                    'placeholder' => 'Description',
+                    'class'       => 'editable-textarea',
+                    'id'          => 'article-content-textarea',
+                    'rows'        => 10,
+                ],
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'html',
+            'type' => 'textarea',
+            'options' => [
+                'label' => 'HTML Content',
+                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
+                'column-size' => 'sm-10',
+                'label_attributes' => [
+                    'class' => 'col-sm-2',
+                ],
+            ],
+            'attributes' => [
+                'placeholder' => 'HTML Content',
+                'class'       => 'editable-textarea',
+                'id'          => 'article-content-textarea',
+                'rows'        => 25,
             ],
         ]);
     }

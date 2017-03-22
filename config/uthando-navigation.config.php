@@ -24,22 +24,32 @@ return [
                 ],
                 'pages' => [
                     'list' => [
-                        'label'     => 'List All Events',
-                        'action'    => 'list',
+                        'label'     => 'List Events',
+                        'action'    => 'index',
                         'route'     => 'admin/events',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                     'add' => [
-                        'label'     => 'Add New Event',
+                        'label'     => 'Add Event',
                         'action'    => 'add',
                         'route'     => 'admin/events/edit',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
+                    ],
+                    'edit' => [
+                        'label'     => 'Edit Event',
+                        'action'    => 'edit',
+                        'route'     => 'admin/events/edit',
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                     'settings' => [
                         'label' => 'Settings',
                         'action' => 'index',
                         'route' => 'admin/events/settings',
                         'resource' => 'menu:admin',
+                        'visible'   => false,
                     ],
                 ],
                 'route' => 'admin/events',

@@ -1,21 +1,35 @@
 <?php $this->headTitle('Add Event') ?>
-<?php $this->layout()->pageTitle = 'Add Event'; ?>
+<?php $this->layout()->pageTitle = $this->translate('Add Event');?>
 
-<?=$this->partial('uthando-admin/partial/add-edit-form', [
-    'form' 			=> $this->form,
-    'formName'		=> 'Event',
-    'postUrl'		=> $this->url('admin/events/edit', [
-        'action'    => 'add',
+<?php $this->placeholder('header-buttons')->captureStart();?>
+<button type="submit" form="form-event" data-toggle="tooltip" title="<?=$this->translate('Save');?>" class="btn btn-primary">
+    <i class="fa fa-save"></i>
+</button>
+<a href="<?=$this->url('admin/events');?>" data-toggle="tooltip" title="<?=$this->translate('Cancel');?>" class="btn btn-default">
+    <i class="fa fa-reply"></i>
+</a>
+<?php $this->placeholder('header-buttons')->captureEnd();?>
+
+<?php
+
+$this->form->setAttributes([
+    'method' => 'post',
+    'id' => 'form-event',
+    'action' => $this->url('admin/events/edit', [
+        'action' => 'add',
     ]),
-    'cancelUrl'     => $this->url('admin/events'),
-    'formElements'	=> [
-        'title', 'dateTime', 'description', 'html',
-    ],
-]); ?>
+]);
 
-<?=$this->inlineScript()
-    ->appendFile('//tinymce.cachefly.net/4.2/tinymce.min.js');
 ?>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?=$this->translate('Add Event');?></h3>
+    </div>
+    <div class="panel-body">
+        <?=$this->form($this->form);?>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -23,31 +37,16 @@
             format : '<?=$this->convertDateFormat('js');?>'
         });
 
-        tinymce.init({
-            selector:'.tiny-mce-textarea',
-            plugins: [
-                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern"
-            ],
-            toolbar1: "insertfile undo redo | styleselect | fontsizeselect bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-            toolbar2: "bootstrap print preview media | forecolor backcolor emoticons",
-            image_advtab: true,
-
-            bootstrapConfig: {
-                'imagesPath': '<?=$this->basePath('/userfiles');?>/' // replace with your images folder path
-            },
-
-            external_plugins: {
-                "bootstrap": "<?=$this->basePath('/js/tinymce/plugins/bootstrap/plugin.js');?>"
-            }
-
-
-            //external_filemanager_path:"<?=$this->basePath('/filemanager');?>/",
-            //filemanager_title:"Responsive Filemanager" ,
-            //external_plugins: { "filemanager" : "<?=$this->basePath('/filemanager/plugin.min.js');?>"}
-
+        $('textarea.editable-textarea').summernote({
+            height: 300,
+            toolbar: [
+                ['style', ['style', 'bold', 'underline', 'clear']],
+                ['font', ['fontname', 'fontsize']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
         });
     });
 </script>

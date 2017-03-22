@@ -46,7 +46,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
             'type' => 'text',
             'options' => [
                 'label' => 'Date Format',
-                'column-size' => 'md-4',
+                'column-size' => 'md-10',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
                 'label_attributes' => [
                     'class' => 'col-md-2',
@@ -59,7 +59,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
             'type' => 'text',
             'options' => [
                 'label' => 'Sort Order',
-                'column-size' => 'md-4',
+                'column-size' => 'md-10',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
                 'label_attributes' => [
                     'class' => 'col-md-2',
@@ -77,7 +77,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
                 'unchecked_value' => '0',
                 'required' 		=> false,
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
-                'column-size' => 'sm-4 col-sm-offset-2',
+                'column-size' => 'md-10 col-md-offset-2',
             ],
         ]);
 
@@ -86,24 +86,11 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
             'type' => 'number',
             'options' => [
                 'label' => 'Number of Events to Show',
-                'column-size' => 'md-4',
+                'column-size' => 'md-10',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
                 'label_attributes' => [
                     'class' => 'col-md-2',
                 ],
-            ],
-        ]);
-
-        $this->add([
-            'name' => 'button-submit',
-            'type' => 'submit',
-            'attributes' => [
-                'type' => 'submit',
-                'class' => 'btn-primary'
-            ],
-            'options' => [
-                'label' => 'Save',
-                'column-size' => 'md-6'
             ],
         ]);
 
