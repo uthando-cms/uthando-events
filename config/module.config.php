@@ -78,7 +78,6 @@ return [
                         '__NAMESPACE__' => 'UthandoEvents\Controller',
                         'controller'    => 'TimeLine',
                         'action'        => 'index',
-                        'force-ssl'     => 'http'
                     ],
                 ],
                 'may_terminate' => true,
