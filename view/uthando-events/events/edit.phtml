@@ -37,17 +37,7 @@ $this->form->setAttributes([
         $('.date-time-pick .input-group').datetimepicker({
             format : '<?=$this->convertDateFormat('js');?>'
         });
-
-        $('textarea.editable-textarea').summernote({
-            height: 300,
-            toolbar: [
-                ['style', ['style', 'bold', 'underline', 'clear']],
-                ['font', ['fontname', 'fontsize']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ]
-        });
     });
 </script>
+
+<?=$this->textEditor()->summernote();?>
