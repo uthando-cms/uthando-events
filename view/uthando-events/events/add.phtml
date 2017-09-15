@@ -31,12 +31,6 @@ $this->form->setAttributes([
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.date-time-pick .input-group').datetimepicker({
-            format : '<?=$this->convertDateFormat('js');?>'
-        });
-    });
-</script>
+<?=$this->datePicker($this->convertDateFormat('js'));?>
 
 <?=$this->textEditor()->summernote();?>
