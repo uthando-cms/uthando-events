@@ -11,6 +11,11 @@
 namespace UthandoEvents\Form;
 
 use TwbBundle\Form\View\Helper\TwbBundleForm;
+use UthandoEvents\Options\EventsOptions;
+use Zend\Form\Element\DateTime;
+use Zend\Form\Element\Hidden;
+use Zend\Form\Element\Text;
+use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
@@ -26,18 +31,18 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
 
     public function init()
     {
-        /* @var \UthandoEvents\Options\EventsOptions $options */
+        /* @var EventsOptions $options */
         $options = $this->getServiceLocator()
-            ->getServiceLocator()->get('UthandoEvents\Options\Events');
+            ->getServiceLocator()->get(EventsOptions::class);
 
         $this->add([
             'name' => 'eventId',
-            'type' => 'hidden',
+            'type' => Hidden::class,
         ]);
 
         $this->add([
             'name' => 'title',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Title',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -53,7 +58,7 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'dateTime',
-            'type' => 'dateTime',
+            'type' => DateTime::class,
             'options' => [
                 'label' => 'Date/Time',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -72,7 +77,7 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'description',
-            'type' => 'textarea',
+            'type' => Textarea::class,
             'options' => [
                 'label' => 'Description',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -91,7 +96,7 @@ class EventsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'html',
-            'type' => 'textarea',
+            'type' => Textarea::class,
             'options' => [
                 'label' => 'HTML Content',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,

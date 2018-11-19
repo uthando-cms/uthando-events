@@ -14,7 +14,10 @@ use UthandoCommon\Hydrator\Strategy\DateTime;
 use UthandoCommon\Service\AbstractMapperService;
 use UthandoEvents\Form\EventsForm;
 use UthandoEvents\Hydrator\EventsHydrator;
+use UthandoEvents\InputFilter\EventsInputFilter;
 use UthandoEvents\Mapper\EventsMapper;
+use UthandoEvents\Model\EventModel;
+use UthandoEvents\Options\EventsOptions;
 use Zend\EventManager\Event;
 
 /**
@@ -25,10 +28,11 @@ use Zend\EventManager\Event;
  */
 class EventsService extends AbstractMapperService
 {
-    /**
-     * @var string
-     */
-    protected $serviceAlias = 'UthandoEvents';
+    protected $form         = EventsForm::class;
+    protected $hydrator     = EventsHydrator::class;
+    protected $inputFilter  = EventsInputFilter::class;
+    protected $mapper       = EventsMapper::class;
+    protected $model        = EventModel::class;
 
     /**
      * @var array
@@ -80,10 +84,10 @@ class EventsService extends AbstractMapperService
     }
 
     /**
-     * @return \UthandoEvents\Options\EventsOptions
+     * @return EventsOptions
      */
     public function getOptions()
     {
-        return $this->getService('UthandoEvents\Options\Events');
+        return $this->getService(EventsOptions::class);
     }
 }

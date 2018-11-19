@@ -8,9 +8,10 @@
  * @license   see LICENSE
  */
 
-namespace UthandoEvents\Mvc\Controller;
+namespace UthandoEvents\Controller;
 
 use UthandoCommon\Controller\SettingsTrait;
+use UthandoEvents\Form\SettingsForm;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
@@ -24,7 +25,7 @@ class SettingsController extends AbstractActionController
 
     public function __construct()
     {
-        $this->setFormName('UthandoEventsSettings')
+        $this->setFormName(SettingsForm::class)
             ->setConfigKey('uthando_events');
     }
 }

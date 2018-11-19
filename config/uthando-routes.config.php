@@ -1,5 +1,8 @@
 <?php
 
+use UthandoEvents\Controller\EventsController;
+use UthandoEvents\Controller\SettingsController;
+
 return [
     'router' => [
         'routes' => [
@@ -14,7 +17,7 @@ return [
                             ],
                             'defaults' => [
                                 '__NAMESPACE__' => 'UthandoEvents\Controller',
-                                'controller'    => 'Events',
+                                'controller'    => EventsController::class,
                                 'action'        => 'index',
                             ],
                         ],
@@ -54,7 +57,7 @@ return [
                                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                     ],
                                     'defaults' => [
-                                        'controller' => 'Settings',
+                                        'controller' => SettingsController::class,
                                         'action' => 'index',
                                     ]
                                 ],

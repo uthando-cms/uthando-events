@@ -98,7 +98,7 @@ class ConvertDateFormat extends AbstractViewHelper
         if (!$this->options instanceof EventsOptions) {
             $this->options = $this->getServiceLocator()
                 ->getServiceLocator()
-                ->get('UthandoEvents\Options\Events');
+                ->get(EventsOptions::class);
         }
 
         return $this->options;

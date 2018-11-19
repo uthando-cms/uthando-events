@@ -12,6 +12,10 @@ namespace UthandoEvents\Form;
 
 use TwbBundle\Form\View\Helper\TwbBundleForm;
 use UthandoEvents\InputFilter\SettingsInputFilter;
+use UthandoEvents\Options\EventsOptions;
+use Zend\Form\Element\Checkbox;
+use Zend\Form\Element\Number;
+use Zend\Form\Element\Text;
 use Zend\Form\Form;
 use Zend\Hydrator\ClassMethods;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
@@ -28,10 +32,10 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
 
     public function init()
     {
-        /* @var \UthandoEvents\Options\EventsOptions $object */
+        /* @var EventsOptions $object */
         $object = $this->getServiceLocator()
             ->getServiceLocator()
-            ->get('UthandoEvents\Options\Events');
+            ->get(EventsOptions::class);
 
         $this->setObject($object)
             ->setHydrator(new ClassMethods());
@@ -43,7 +47,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'date_format',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Date Format',
                 'column-size' => 'md-10',
@@ -56,7 +60,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'sort_order',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Sort Order',
                 'column-size' => 'md-10',
@@ -69,7 +73,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name'			=> 'show_expired_events',
-            'type'			=> 'checkbox',
+            'type'			=> Checkbox::class,
             'options'		=> [
                 'label'			=> 'Show Expired Events',
                 'use_hidden_element' => true,
@@ -83,7 +87,7 @@ class SettingsForm extends Form implements ServiceLocatorAwareInterface
 
         $this->add([
             'name' => 'number_of_events_to_show',
-            'type' => 'number',
+            'type' => Number::class,
             'options' => [
                 'label' => 'Number of Events to Show',
                 'column-size' => 'md-10',

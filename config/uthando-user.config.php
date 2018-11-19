@@ -1,5 +1,9 @@
 <?php
 
+use UthandoEvents\Controller\EventsController;
+use UthandoEvents\Controller\SettingsController;
+use UthandoEvents\Controller\TimeLineController;
+
 return [
     'uthando_user' => [
         'acl' => [
@@ -8,7 +12,7 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoEvents\Controller\TimeLine' => ['action' => ['index']],
+                                TimeLineController::class => ['action' => ['index']],
                             ],
                         ],
                     ],
@@ -17,17 +21,17 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoEvents\Controller\Events' => ['action' => 'all'],
-                                'UthandoEvents\Controller\Settings' => ['action' => 'all'],
+                                EventsController::class => ['action' => 'all'],
+                                SettingsController::class => ['action' => 'all'],
                             ],
                         ],
                     ],
                 ],
             ],
             'resources' => [
-                'UthandoEvents\Controller\Events',
-                'UthandoEvents\Controller\Settings',
-                'UthandoEvents\Controller\TimeLine',
+                EventsController::class,
+                SettingsController::class,
+                TimeLineController::class,
             ],
         ],
     ],

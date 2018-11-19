@@ -1,5 +1,13 @@
 <?php
 
+use UthandoEvents\Controller\EventsController;
+use UthandoEvents\Controller\SettingsController;
+use UthandoEvents\Controller\TimeLineController;
+use UthandoEvents\Options\EventsOptions;
+use UthandoEvents\ServiceManager\EventsOptionsFactory;
+use UthandoEvents\ServiceManager\EventsService;
+use UthandoEvents\View\Helper;
+
 return [
     'asset_manager' => [
         'resolver_configs' => [
@@ -15,51 +23,29 @@ return [
     ],
     'controllers' => [
         'invokables' => [
-            'UthandoEvents\Controller\Events'   => 'UthandoEvents\Mvc\Controller\EventsController',
-            'UthandoEvents\Controller\Settings' => 'UthandoEvents\Mvc\Controller\SettingsController',
-            'UthandoEvents\Controller\TimeLine' => 'UthandoEvents\Mvc\Controller\TimeLineController',
-        ],
-    ],
-    'form_elements' => [
-        'invokables' => [
-            'UthandoEvents'         => 'UthandoEvents\Form\EventsForm',
-            'UthandoEventsSettings' => 'UthandoEvents\Form\SettingsForm',
-        ],
-    ],
-    'hydrators' => [
-        'invokables' => [
-            'UthandoEvents' => 'UthandoEvents\Hydrator\EventsHydrator',
-        ],
-    ],
-    'input_filters' => [
-        'invokables' => [
-            'UthandoEvents' => 'UthandoEvents\InputFilter\EventsInputFilter',
+            EventsController::class => EventsController::class,
+            SettingsController::class => SettingsController::class,
+            TimeLineController::class => TimeLineController::class,
         ],
     ],
     'service_manager' => [
         'factories' => [
-            'UthandoEvents\Options\Events' => 'UthandoEvents\ServiceManager\EventsOptionsFactory',
+            EventsOptions::class => EventsOptionsFactory::class,
         ]
-    ],
-    'uthando_mappers' => [
-        'invokables' => [
-            'UthandoEvents' => 'UthandoEvents\Mapper\EventsMapper',
-        ],
-    ],
-    'uthando_models' => [
-        'invokables' => [
-            'UthandoEvents' => 'UthandoEvents\Model\EventModel',
-        ],
     ],
     'uthando_services' => [
         'invokables' => [
-            'UthandoEvents' => 'UthandoEvents\ServiceManager\EventsService',
+            EventsService::class => EventsService::class
         ],
     ],
     'view_helpers' => [
+        'aliases' => [
+            'ConvertDateFormat' => Helper\ConvertDateFormat::class,
+            'EventsOptions'     => \UthandoEvents\View\Helper\EventsOptions::class,
+        ],
         'invokables' => [
-            'ConvertDateFormat' => 'UthandoEvents\View\Helper\ConvertDateFormat',
-            'EventsOptions'     => 'UthandoEvents\View\Helper\EventsOptions',
+            Helper\ConvertDateFormat::class => Helper\ConvertDateFormat::class,
+            Helper\EventsOptions::class => Helper\EventsOptions::class,
         ],
     ],
     'view_manager' => [
@@ -76,7 +62,7 @@ return [
                     'route' => '/events',
                     'defaults' => [
                         '__NAMESPACE__' => 'UthandoEvents\Controller',
-                        'controller'    => 'TimeLine',
+                        'controller'    => TimeLineController::class,
                         'action'        => 'index',
                     ],
                 ],

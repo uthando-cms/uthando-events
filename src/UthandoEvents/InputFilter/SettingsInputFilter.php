@@ -10,6 +10,10 @@
 
 namespace UthandoEvents\InputFilter;
 
+use Zend\Filter\Boolean;
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
+use Zend\Filter\ToInt;
 use Zend\InputFilter\InputFilter;
 
 /**
@@ -25,8 +29,8 @@ class SettingsInputFilter extends InputFilter
             'name' => 'date_format',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ]
         ]);
 
@@ -34,8 +38,8 @@ class SettingsInputFilter extends InputFilter
             'name' => 'sort_order',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ]
         ]);
 
@@ -44,9 +48,9 @@ class SettingsInputFilter extends InputFilter
             'required' => false,
             'allow_empty' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-                ['name' => 'Boolean'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+                ['name' => Boolean::class],
             ]
         ]);
 
@@ -54,9 +58,9 @@ class SettingsInputFilter extends InputFilter
             'name' => 'number_of_events_to_show',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-                ['name' => 'ToInt'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+                ['name' => ToInt::class],
             ]
         ]);
     }

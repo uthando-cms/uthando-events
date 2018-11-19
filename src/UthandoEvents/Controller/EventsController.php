@@ -8,9 +8,10 @@
  * @license   see LICENSE
  */
 
-namespace UthandoEvents\Mvc\Controller;
+namespace UthandoEvents\Controller;
 
 use UthandoCommon\Controller\AbstractCrudController;
+use UthandoEvents\ServiceManager\EventsService;
 
 /**
  * Class EventsController
@@ -20,6 +21,6 @@ use UthandoCommon\Controller\AbstractCrudController;
 class EventsController extends AbstractCrudController
 {
     protected $controllerSearchOverrides = ['sort' => 'eventId'];
-    protected $serviceName = 'UthandoEvents';
+    protected $serviceName = EventsService::class;
     protected $route = 'admin/events';
 }

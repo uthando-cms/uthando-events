@@ -8,9 +8,11 @@
  * @license   see LICENSE
  */
 
-namespace UthandoEvents\Mvc\Controller;
+namespace UthandoEvents\Controller;
 
 use UthandoCommon\Service\ServiceTrait;
+use UthandoEvents\Options\EventsOptions;
+use UthandoEvents\ServiceManager\EventsService;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
@@ -24,10 +26,10 @@ class TimeLineController extends AbstractActionController
 
     public function indexAction()
     {
-        $events = $this->getService('UthandoEvents')
+        $events = $this->getService(EventsService::class)
             ->getTimeLine();
 
-        $options = $this->getService('UthandoEvents\Options\Events');
+        $options = $this->getService(EventsOptions::class);
 
         return [
             'events' => $events,

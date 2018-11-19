@@ -10,7 +10,11 @@
 
 namespace UthandoEvents\InputFilter;
 
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
+use Zend\Filter\ToInt;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\Digits;
 
 /**
  * Class EventsInputFilter
@@ -25,12 +29,12 @@ class EventsInputFilter extends InputFilter
             'name' => 'eventId',
             'required' => false,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-                ['name' => 'ToInt'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+                ['name' => ToInt::class],
             ],
             'validators' => [
-                ['name' => 'Digits'],
+                ['name' => Digits::class],
             ],
         ]);
 
@@ -38,8 +42,8 @@ class EventsInputFilter extends InputFilter
             'name' => 'title',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
         ]);
 
@@ -47,8 +51,8 @@ class EventsInputFilter extends InputFilter
             'name' => 'description',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
         ]);
 
@@ -56,7 +60,7 @@ class EventsInputFilter extends InputFilter
             'name' => 'html',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
+                ['name' => StringTrim::class],
             ],
         ]);
 
@@ -64,8 +68,8 @@ class EventsInputFilter extends InputFilter
             'name' => 'dateTime',
             'required' => true,
             'filters' => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
         ]);
     }
